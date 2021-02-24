@@ -47,3 +47,6 @@ def bulls_n_cows(request):
         context = {"result": message}
         return render(request, 'index.html', context)
 
+def statistics(request):
+    context = {'history': bulls_cows}
+    return render(request, 'display.html', context)

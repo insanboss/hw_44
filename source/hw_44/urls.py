@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from webapp.views import bulls_n_cows
+from webapp.views import bulls_n_cows, statistics
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', bulls_n_cows)
+    path('', bulls_n_cows),
+    path('display/', statistics)
 ]

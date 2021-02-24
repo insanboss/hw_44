@@ -9,7 +9,10 @@
 </head>
 <body>
     <div>
+        {% for i,j in history.items %}
+            <p>Номер хода: {{ i }}  {{ j }}</p>
 
+        {% endfor %}
     </div>
 </body>
 </html>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 secret_nums = [5, 1, 2, 9]
 
+
 def validation(secret_nums, nums):
     bulls = 0
     cows = 0
@@ -26,16 +27,23 @@ def validation(secret_nums, nums):
         return f'You have {bulls} bulls and {cows} cows'
 
 
+steps = 0
+bulls_cows = {}
+
 def bulls_n_cows(request):
     if request.method == 'GET':
         return render(request, 'index.html')
     elif request.method == 'POST':
+        global steps
+        steps += 1
         try:
             numbers = list(map(int, request.POST.get('numbers').split(' ')))
             message = validation(secret_nums, numbers)
         except ValueError:
             message = f'You entered not numbers, pls enter numbers'
 
+        bulls_cows[steps] = message
+        print(bulls_cows)
         context = {"result": message}
         return render(request, 'index.html', context)
 
